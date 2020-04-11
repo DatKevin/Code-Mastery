@@ -1,0 +1,28 @@
+def mixed_fraction(s):
+    string = s.split("/")
+    numerator = int(string[0])
+    denominator = int(string[1])
+    if denominator == 0:
+        return numerator/denominator
+    negative = True
+    if (numerator < 0 and denominator < 0) or (numerator > 0 and denominator > 0):
+        negative = False
+    numerator = abs(numerator)
+    denominator = abs(denominator)
+    whole = numerator // denominator
+    numerator -= whole * denominator
+    if negative:
+        whole *= -1
+    if numerator % denominator == 0:
+        return str(whole)
+    x = numerator
+    y = denominator
+    while y != 0:
+        (x, y) = (y, x % y)
+    numerator = numerator // x
+    denominator = denominator // x
+    if whole == 0:
+        if negative:
+            numerator *= -1
+        return "{}/{}".format(numerator, denominator)
+    return "{} {}/{}".format(whole, numerator, denominator)
