@@ -1,3 +1,4 @@
+ 
 def getAllPrimeFactors(n):
     result = []
     if type(n) != type(1):
